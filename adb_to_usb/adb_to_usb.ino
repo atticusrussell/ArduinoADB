@@ -1,6 +1,6 @@
 #include "adb.h"
 #include "keymap.h"
-#define LOCKING_CAPS // comment this out if not using a keyboard with locking Caps Lock
+// #define LOCKING_CAPS // comment this out if not using a keyboard with locking Caps Lock
 
 static bool has_media_keys = false;
 static bool is_iso_layout = false;
