@@ -10,4 +10,4 @@ printf "Resetting ATMega16U2 using dfu-programmer...\n"
 dfu-programmer atmega16u2 reset
 printf "Unplug and reconnect Arduino USB cable.\n"
 read -n 1 -s -r -p "Press any key to continue once Arduino reconnected"
-printf "Your Arduino should now be in serial (normal) mode and be able to be reprogrammed."
+printf "\nYour Arduino should now be in serial (normal) mode and be able to be reprogrammed."
