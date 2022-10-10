@@ -9,4 +9,6 @@ printf "Flashing Arduino-keyboard-0.3.hex using dfu-programmer...\n"
 dfu-programmer atmega16u2 flash Arduino-keyboard-0.3.hex
 printf "Resetting ATMega16U2 using dfu-programmer...\n"
 dfu-programmer atmega16u2 reset
-printf "Unplug and reconnect Arduino USB cable.\nAfter this your keyboard should work."
+printf "Unplug and reconnect Arduino USB cable.\n"
+read -n 1 -s -r -p "Press any key to continue once Arduino reconnected"
+printf "\nYour connected keyboard should now work. If you want to reset your Arduino to normal mode in order to reprogram it, run flashSerial.sh"
