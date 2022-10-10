@@ -1,0 +1,4 @@
+{
+    "sketch": "adb_to_usb/adb_to_usb.ino",
+    "board": "arduino:avr:uno"
+}
