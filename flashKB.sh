@@ -16,6 +16,17 @@ flash_ATM16U2_KB(){
 
 
 echo "This script is to re-flash your Arduino's ATMega16U2 to act as a USB converter for the ADB protocol."
+# checks to see if dfu-programmer is installed. If it is not it prompts the user to install it
+nullIfNoDFU=$(type -p dfu-programmer)
+if [ -z "$nullIfNoDFU" ]
+then
+    printf "\nRequired program dfu-programmer is not installed. Please install it from your distro's package manager and try again. \nex. \"sudo apt install dfu-programmer\" \n"
+    echo "program exiting..."
+    exit 1
+else
+    echo "dfu-programmer is installed, proceeding normally"
+fi
+
 loop=1
 while (($loop==1))
 do
@@ -37,9 +48,33 @@ do
             loop=0
             ;;
         r)
+            # check if arduino-cli is installed and procede accordingly
+            nullIfNoArduinoCLI=$(type -p arduino-cli)
+            if [ -z "$nullIfNoArduinoCLI" ]
+            then
+                printf "\nRequired program arduino-cli is not installed. Please run the following command to install it: \"sudo curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=~/bin sh\" \n"
+                echo "program exiting..."
+                exit 1
+            else
+                echo "arduino-cli is installed, proceeding normally"
+            fi
+            # runs flashSerial to set the AVR16U2 in serial mode so that it can be programmed
             ./flashSerial.sh
+            
+
             # TODO rebuild and upload the sketch here
-            printf "\n#TODO here is where I would build and upload the Arduino sketch \n"
+            printf "\n\nPLACEHOLDER Arduino-CLI part under development\n"
+          
+
+            # TODO check if the sketch name directory exists and if it doesn't move files accordingly
+            DIR="adb_to_usb" 
+            if [-d "$DIR"]
+            then
+
+            fi 
+            # TODO use the arduino CLI to build and stuff
+
+            printf "\nEND PLACEHOLDER\n\n"
             flash_ATM16U2_KB
             loop=0
             ;;
